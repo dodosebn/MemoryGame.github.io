@@ -1,7 +1,6 @@
 __pycache__/
 venv/
 .vscode
-Pipfile
 .pytest_cache/
 
 # Logs
