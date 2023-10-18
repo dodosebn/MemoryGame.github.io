@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-SQULALCHEMY_DATABASE_URL = 'sqlite:///./db/memoryGame.db'
+SQULALCHEMY_DATABASE_URL = 'sqlite:///./database.db'
 
 engine =create_engine(SQULALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 
