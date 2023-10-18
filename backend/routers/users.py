@@ -5,6 +5,7 @@ from db import models
 from sqlalchemy.orm import Session
 from db.db_setup import get_db
 from fastapi.security import OAuth2PasswordRequestForm
+from uuid import uuid4
 
 router = APIRouter()
 
@@ -22,19 +23,23 @@ async def create_user(request: user_schema.UserCreate,
     Returns:
         HTTP_201_created: user profile successfully created
     """
-    existing_email = db.query(models.User).filter(models.User.email == request.email).first()
+    username = request.username.capitalize()
+    email = request.email.lower()
+
+    existing_email = db.query(models.User).filter(models.User.email == email).first()
     if existing_email:
         raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="email already exist")
 
-    existing_username = db.query(models.User).filter(models.User.username == request.username).first()
+    existing_username = db.query(models.User).filter(models.User.username == username).first()
     if existing_username:
         raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="username already exist")
 
     user = models.User(
+            id=uuid4().hex,
             first_name=request.first_name,
             last_name=request.last_name,
-            username=request.username,
-            email=request.email,
+            username=username,
+            email=email,
             hashed_password=await hashing.hash_password(request.password)
         )
     db.add(user)
@@ -55,7 +60,7 @@ async def login(request: OAuth2PasswordRequestForm = Depends(),
         HTTP_404_NOT_FOUND: invalid credentials
     """
     user = db.query(models.User).filter(
-        models.User.username == request.username).first()
+        models.User.username == request.username.capitalize()).first()
 
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
@@ -81,8 +86,8 @@ def get_user(username: str, db: Session = Depends(get_db)):
     Raises:
         HTTP_404_NOT_FOUND: username not found in the db
     """
-    user = db.query(models.User).filter(models.User.username == username).first()
+    user = db.query(models.User).filter(models.User.username == username.capitalize()).first()
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            detail="invalid username")
+                            detail="user not found")
     return user

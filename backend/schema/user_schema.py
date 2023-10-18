@@ -16,7 +16,7 @@ class UserCreate(BaseModel):
 
 class DisplayUser(BaseModel):
     """Describes the response model for adding/fetching a user profile."""
-
+    id:str
     first_name: Optional[str]
     last_name: Optional[str]
     username: str
