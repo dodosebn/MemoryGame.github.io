@@ -11,7 +11,7 @@ const password = document.querySelector("#password");
 const cPassword = document.querySelector("#cPassword");
 const signUp = document.querySelector("#signUp");
 const Email = document.querySelector("#Email");
-const Password = document.querySelector("#Password");
+const LPassword = document.querySelector("#LPassword");
 const gameContainer = document.querySelector(".container");
 
 function toggleForms() {
@@ -26,7 +26,29 @@ function Binomial() {
     signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
   // }
 }
-
+function bernouli() {
+  gameContainer.style.display = "block";
+  loginContainer .style.display ="none";
+}
+function miniVal(){
+  if (Email.value === "") {
+    alert("Error: Please enter your email address.");
+    return false;
+  }
+  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(Email.value)) {
+    alert("Error: Please enter a valid email address.");
+    return false;
+  }
+  
+  if (LPassword.value === "") {
+    alert("Error: Password is empty");
+    return false;
+    return true;
+    bernouli() ;
+  }
+}
 function validateInputs(){
   if (fullName.value === "" && email.value === "" && password.value === "" && cPassword.value === "") {
     alert("Error: Please fill out the form");
@@ -86,15 +108,25 @@ signUp.addEventListener("click", (event) => {
   if(validateInputs()){
     Binomial();
   }
+  
+});
 
 
+login.addEventListener("click", (event) => {
+  event.preventDefault();
+  if(miniVal()){
+    bernouli() ;
+  }
+  
 });
 
 const emojis = ["🐱‍🚀", "🐱‍🚀", "🎂", "🎂", "💖", "💖", "🎶", "🎶"];
 var shuf_emojis = emojis.sort(() => (Math.random() > 0.5 ? 1 : -1));
 var clickCount = 0;
 
-for (var i = 0; i < shuf_emojis.length; i++) {
+for (var i = 0; i
+  
+  < shuf_emojis.length; i++) {
   let box = document.createElement("div");
   box.className = "item";
   box.innerHTML = shuf_emojis[i];
