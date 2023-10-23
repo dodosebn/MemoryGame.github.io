@@ -1,4 +1,58 @@
-const loginContainer = document.querySelector("#loginContainer");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="signupContainer" class="signupContainer">
+
+        <p class = " success register-success"></p>
+        <form id="signupForm" onsubmit="return validateInputs();" >
+          <h2>Signup Form</h2>
+          <label for="name">Names<span>Enter your Name</span></label>
+          <input type="text" id="fullName" name="name" ><br>
+          <label for="email">Email:<span>Enter an active Email</span></label>
+          <input type="email" id="email" name="email" ><br>
+          <label for="password">Password:<span>Enter a password</span></label>
+          <input type="password" id="password" name="password" ><br>
+          <label for="confirmPassword">Confirm Password:<span>Password</span></label>
+          <input type="password" id="cPassword" name="confirmPassword"><br>
+          <input type="submit" value="Sign Up" id="signUp">
+        </form>
+        <p>Already have an account?  <a href="#" onclick="toggleForms();">Sign in here</a></p>
+      </div>
+     
+        <div id="loginContainer" style="display: none;">
+      
+          <form id="loginForm">
+            <h2>LOGIN TO SEE THE GAME</h2>
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" name="loginEmail"><br>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="Password" name="loginPassword" ><br>
+            <input type="submit" value="Login" id="login">
+          </form>
+          <p>Don't have an account?   <a href="#" onclick="toggleForms();">Sign Up here</a>.</p>
+        </div>
+      
+       
+      <!-- Ma, The form ends here -->
+    
+      <div class="container" id="container">
+        <div class="head">
+            <h2>Memory Game</h2>
+            <div class="score" id="score">Score: <span id="score">0</span></div>
+          </div>
+        <div class="game"></div>
+        <button class="reset" onclick="window.location.reload();">Reset</button>
+        <div class="message" id="congratulations"></div>
+        <div class="message" id="clickCount"></div>
+      </div>
+<script>
+    const loginContainer = document.querySelector("#loginContainer");
 const loginForm = document.querySelector("#loginForm");
 const userName = document.querySelector("#userName");
 const email = document.querySelector("#email");
@@ -87,7 +141,6 @@ signUp.addEventListener("click", (event) => {
     Binomial();
   }
 
-
 });
 
 const emojis = ["🐱‍🚀", "🐱‍🚀", "🎂", "🎂", "💖", "💖", "🎶", "🎶"];
@@ -142,3 +195,8 @@ for (var i = 0; i < shuf_emojis.length; i++) {
 
   document.querySelector(".game").appendChild(box);
 }
+</script>>
+
+
+</body>
+</html>

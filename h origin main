@@ -1,0 +1,30 @@
+[33mcommit 568ae28b40cbf8548c8b351cf0a76f82cf5c8831[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Merge: 3d56480 ccd5ffa
+Author: dodosebn <orjidominion32@gmail.com>
+Date:   Sat Oct 14 00:04:00 2023 +0400
+
+    Merge branch 'main' of github.com:dodosebn/MemoryGame.github.io
+
+[33mcommit 3d56480cb47531c71d25cacbbb773dd7feef04ff[m
+Author: dodosebn <orjidominion32@gmail.com>
+Date:   Fri Oct 13 23:55:34 2023 +0400
+
+    Added new file
+
+[33mcommit ccd5ffac612f7299a068b0a7233ef099531baaa2[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Orji Dominion <130156592+dodosebn@users.noreply.github.com>
+Date:   Tue Oct 10 05:40:10 2023 +0400
+
+    Update index.html
+
+[33mcommit 8350093066856b4be1926cecc141f65d578878d7[m
+Author: Orji Dominion <130156592+dodosebn@users.noreply.github.com>
+Date:   Tue Oct 10 05:38:38 2023 +0400
+
+    Update index.css
+
+[33mcommit 854a767618382001721ee85a2a2416b4c5585443[m[33m ([m[1;32mclone-repository[m[33m)[m
+Author: dodosebn <orjidominion32@gmail.com>
+Date:   Tue Oct 10 02:31:53 2023 +0400
+
+    first commit

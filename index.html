@@ -11,7 +11,7 @@
   <div id="signupContainer" class="signupContainer">
 
     <p class = " success register-success"></p>
-    <form id="signupForm" onsubmit="return validateInputs();" >
+    <form id="signupForm" onsubmit="return validateInputs();" method="post">
       <h2>Signup Form</h2>
       <label for="name">Names<span>Enter your Name</span></label>
       <input type="text" id="fullName" name="name" ><br>
@@ -28,7 +28,7 @@
  
     <div id="loginContainer" style="display: none;">
   
-      <form id="loginForm">
+      <form id="loginForm" method="post">
         <h2>LOGIN TO SEE THE GAME</h2>
         <label for="Email">Email:</label>
         <input type="email" id="Email" name="loginEmail"><br>
@@ -42,7 +42,7 @@
    
   <!-- Ma, The form ends here -->
 
-  <div class="container" id="container">
+  <div class="container" id="container" style="display: none;">
     <div class="head">
         <h2>Memory Game</h2>
         <div class="score" id="score">Score: <span id="score">0</span></div>
@@ -52,6 +52,7 @@
     <div class="message" id="congratulations"></div>
     <div class="message" id="clickCount"></div>
   </div>
+  <script src="backend.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
