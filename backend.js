@@ -1,7 +1,6 @@
-const BASE_URL =  "http://127.0.0.1:8000/api/v1" //https://memory-game-x3fx.onrender.com/
+const BASE_URL =  "https://memory-game-x3fx.onrender.com/api/v1"  //"http://127.0.0.1:8000/api/v1" for local env
 
-const loggedInUser = {}
-let error ;
+const loggedInUserData = {}
 function handleSignup() {
   const userData = {
     username: fullName.value,
@@ -24,7 +23,7 @@ function handleSignup() {
       }
     })
     .then(data => {
-      loggedInUser = data
+      loggedInUserData = data
       console.log('Signup successful:', data);
     })
     .catch(error => {
@@ -61,15 +60,4 @@ function handleLogin() {
 }
 
 
-// signupForm.addEventListener('submit', event => {
-//   event.preventDefault();
-//   if (validateInputs()) {
-//     handleSignup();
-//   }
-// });
-
-// loginForm.addEventListener('submit', event => {
-//   event.preventDefault();
-//   handleLogin();
-// });
 
