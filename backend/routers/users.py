@@ -48,7 +48,7 @@ async def create_user(request: user_schema.UserCreate,
     return user
 
 @router.post("/login", response_model=user_schema.Token)
-async def login(request: OAuth2PasswordRequestForm = Depends(),
+async def login(request: user_schema.Login,
                 db: Session = Depends(get_db)):
     """authenticates a user attempting to login.
     Args:
@@ -60,7 +60,7 @@ async def login(request: OAuth2PasswordRequestForm = Depends(),
         HTTP_404_NOT_FOUND: invalid credentials
     """
     user = db.query(models.User).filter(
-        models.User.username == request.username.capitalize()).first()
+        models.User.email == request.email.lower()).first()
 
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
