@@ -19,7 +19,7 @@ function toggleForms() {
   signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
 }
 
-function Binomial() {
+function DisplayGame() {
   // // const isValid = validateInputs();
   // if (isValid) {
     gameContainer.style.display = loginContainer.style.display === "block" ? "none" : "block";
@@ -45,8 +45,6 @@ function miniVal(){
   if (LPassword.value === "") {
     alert("Error: Password is empty");
     return false;
-    return true;
-    bernouli() ;
   }
 }
 function validateInputs(){
@@ -96,28 +94,22 @@ function validateInputs(){
     alert("Error: Passwords do not match");
     return false;
   }
-  
-  return true;
-  Binomial();
- 
 }
 
 
 signUp.addEventListener("click", (event) => {
   event.preventDefault();
   if(validateInputs()){
-    Binomial();
+    handleSignup();
+    DisplayGame();
   }
-  
 });
 
 
 login.addEventListener("click", (event) => {
   event.preventDefault();
-  if(miniVal()){
-    bernouli() ;
-  }
-  
+  handleLogin();
+  bernouli() ;
 });
 
 const emojis = ["🐱‍🚀", "🐱‍🚀", "🎂", "🎂", "💖", "💖", "🎶", "🎶"];

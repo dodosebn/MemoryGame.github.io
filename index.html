@@ -31,9 +31,9 @@
       <form id="loginForm" onsubmit="return miniVal();" method="post">
         <h2>LOGIN TO SEE THE GAME</h2>
         <label for="Email">Email:</label>
-        <input type="email" id="Email" name="loginEmail"><br>
+        <input type="email" id="Email" name="loginEmail" required><br>
         <label for="loginPassword">Password:</label>
-        <input type="password" id="LPassword" name="loginPassword" ><br>
+        <input type="password" id="LPassword" name="loginPassword" required><br>
         <input type="submit" value="Login" id="login">
       </form>
       <p>Don't have an account?   <a href="#" onclick="toggleForms();">Sign Up here</a>.</p>
@@ -53,6 +53,6 @@
     <div class="message" id="clickCount"></div>
   </div>
   <script src="backend.js"></script>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
