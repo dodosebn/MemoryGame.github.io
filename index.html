@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Game</title>
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
 </head>
 <body>
@@ -28,7 +29,7 @@
  
     <div id="loginContainer" style="display: none;">
   
-      <form id="loginForm" onsubmit="return miniVal();" method="post">
+      <form id="loginForm" method="post">
         <h2>LOGIN TO SEE THE GAME</h2>
         <label for="Email">Email:</label>
         <input type="email" id="Email" name="loginEmail"><br>
@@ -51,6 +52,14 @@
     <button class="reset" onclick="window.location.reload();">Reset</button>
     <div class="message" id="congratulations"></div>
     <div class="message" id="clickCount"></div>
+<button class="noting" id="noting">Suprise!!</button>
+  </div>
+
+  <div class="notepad">
+    <h1><i class="fa-solid fa-trash"></i>Take Notes</h1>
+    <textarea id="textarea1" cols="50" rows="20"></textarea>
+<button id="create"><i class="fa-solid fa-book"></i> Create Note</button>
+<button  id="save">Save</button>
   </div>
   <script src="backend.js"></script>
 <script src="script.js"></script>

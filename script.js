@@ -20,35 +20,10 @@ function toggleForms() {
 }
 
 function Binomial() {
-  // // const isValid = validateInputs();
-  // if (isValid) {
     gameContainer.style.display = loginContainer.style.display === "block" ? "none" : "block";
     signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
-  // }
 }
-function bernouli() {
-  gameContainer.style.display = "block";
-  loginContainer .style.display ="none";
-}
-function miniVal(){
-  if (Email.value === "") {
-    alert("Error: Please enter your email address.");
-    return false;
-  }
-  
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(Email.value)) {
-    alert("Error: Please enter a valid email address.");
-    return false;
-  }
-  
-  if (LPassword.value === "") {
-    alert("Error: Password is empty");
-    return false;
-    return true;
-    bernouli() ;
-  }
-}
+
 function validateInputs(){
   if (fullName.value === "" && email.value === "" && password.value === "" && cPassword.value === "") {
     alert("Error: Please fill out the form");
@@ -108,24 +83,14 @@ signUp.addEventListener("click", (event) => {
   if(validateInputs()){
     Binomial();
   }
-  
 });
 
-
-login.addEventListener("click", (event) => {
-  event.preventDefault();
-  if(miniVal()){
-    bernouli() ;
-  }
-  
-});
 
 const emojis = ["🐱‍🚀", "🐱‍🚀", "🎂", "🎂", "💖", "💖", "🎶", "🎶"];
 var shuf_emojis = emojis.sort(() => (Math.random() > 0.5 ? 1 : -1));
 var clickCount = 0;
 
 for (var i = 0; i
-  
   < shuf_emojis.length; i++) {
   let box = document.createElement("div");
   box.className = "item";
@@ -173,4 +138,31 @@ for (var i = 0; i
   };
 
   document.querySelector(".game").appendChild(box);
+}
+// Ma this for the Note Pad Section 
+const create = document.getElementById("create");
+  const createInput = document.getElementById("textarea1");
+  const saveText = document.getElementById("save");
+  const noting = document.getElementById("noting");
+
+noting.addEventListener("click", (event) => {
+  event.preventDefault();
+  Notepad(event);
+});
+
+  function Notepad(event) {
+event.preventDefault();
+create.addEventListener("click", event => {
+  event.preventDefault();
+  createAgain(event);
+});
+
+function createAgain(event) {
+event.preventDefault();
+createInput.style.display = "block";
+if(createInput.style.display = "block"){
+  create.style.display="none"
+saveText.style.display="block"
+}
+}
 }
