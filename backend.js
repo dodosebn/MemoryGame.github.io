@@ -1,23 +1,14 @@
-        window.onload = function() {
-          const ui = SwaggerUIBundle({
-              url: "https://memory-game-x3fx.onrender.com/docs/swagger.json",
-              dom_id: '#swagger-ui',
-              presets: [
-                  SwaggerUIBundle.presets.apis,
-                  SwaggerUIStandalonePreset
-              ],
-              layout: "BaseLayout"
-          });
-      };
-      
+const BASE_URL =  "https://memory-game-x3fx.onrender.com/api/v1"  //"http://127.0.0.1:8000/api/v1" for local env
+
+const loggedInUserData = {}
 function handleSignup() {
   const userData = {
-    name: fullName.value,
+    username: fullName.value,
     email: email.value,
     password: password.value
   };
 
-  fetch('https://memory-game-x3fx.onrender.com/docs#/Users/create_user_api_v1_users_post', {
+  fetch(`${BASE_URL}/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -32,6 +23,7 @@ function handleSignup() {
       }
     })
     .then(data => {
+      loggedInUserData = data
       console.log('Signup successful:', data);
     })
     .catch(error => {
@@ -42,10 +34,10 @@ function handleSignup() {
 function handleLogin() {
   const credentials = {
     email: Email.value,
-    password: Password.value
+    password: LPassword.value
   };
 
-  fetch('https://memory-game-x3fx.onrender.com/docs#/Users/login_api_v1_login_post', {
+  fetch(`${BASE_URL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -67,15 +59,5 @@ function handleLogin() {
     });
 }
 
-signupForm.addEventListener('submit', event => {
-  event.preventDefault();
-  if (validateInputs()) {
-    handleSignup();
-  }
-});
 
-loginForm.addEventListener('submit', event => {
-  event.preventDefault();
-  handleLogin();
-});
 

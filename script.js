@@ -19,9 +19,39 @@ function toggleForms() {
   signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
 }
 
+<<<<<<< HEAD
 function Binomial() {
     gameContainer.style.display = loginContainer.style.display === "block" ? "none" : "block";
     signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
+=======
+function DisplayGame() {
+  // // const isValid = validateInputs();
+  // if (isValid) {
+    gameContainer.style.display = loginContainer.style.display === "block" ? "none" : "block";
+    signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
+  // }
+}
+function bernouli() {
+  gameContainer.style.display = "block";
+  loginContainer .style.display ="none";
+}
+function miniVal(){
+  if (Email.value === "") {
+    alert("Error: Please enter your email address.");
+    return false;
+  }
+  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(Email.value)) {
+    alert("Error: Please enter a valid email address.");
+    return false;
+  }
+  
+  if (LPassword.value === "") {
+    alert("Error: Password is empty");
+    return false;
+  }
+>>>>>>> a280e7809a2ad01e1861e24427730380b66ef02c
 }
 
 function validateInputs(){
@@ -71,21 +101,28 @@ function validateInputs(){
     alert("Error: Passwords do not match");
     return false;
   }
-  
-  return true;
-  Binomial();
- 
+  return true
 }
 
 
 signUp.addEventListener("click", (event) => {
   event.preventDefault();
   if(validateInputs()){
-    Binomial();
+    handleSignup();
+    DisplayGame();
   }
 });
 
 
+<<<<<<< HEAD
+=======
+login.addEventListener("click", (event) => {
+  event.preventDefault();
+  handleLogin();
+  bernouli() ;
+});
+
+>>>>>>> a280e7809a2ad01e1861e24427730380b66ef02c
 const emojis = ["🐱‍🚀", "🐱‍🚀", "🎂", "🎂", "💖", "💖", "🎶", "🎶"];
 var shuf_emojis = emojis.sort(() => (Math.random() > 0.5 ? 1 : -1));
 var clickCount = 0;
