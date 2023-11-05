@@ -6,35 +6,37 @@
   <title>Memory Game</title>
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
 </head>
 <body>
+  
   <div id="signupContainer" class="signupContainer">
+    <p id="error.message" class="crazy"></p>
 
-    <p class = " success register-success"></p>
-    <form id="signupForm" onsubmit="return validateInputs();" method="post">
+    <form id="signupForm" onsubmit="return handleSignup();" method="post">
       <h2>Signup Form</h2>
-      <label for="name">Names<span>Enter your Name</span></label>
+      <label for="name">Names<span id="error-Name"></span></label>
       <input type="text" id="fullName" name="name" ><br>
-      <label for="email">Email:<span>Enter an active Email</span></label>
+      <label for="username">User Name<span id="error-username"></span></label>
+      <input type="text" id="userName" name="username"><br>
+      <label for="email">Email:<span id="error-email"></span></label>
       <input type="email" id="email" name="email" ><br>
-      <label for="password">Password:<span>Enter a password</span></label>
+      <label for="password">Password:<span id="error-password"></span></label>
       <input type="password" id="password" name="password" ><br>
-      <label for="confirmPassword">Confirm Password:<span>Password</span></label>
+      <label for="confirmPassword">C-Password<span  id="error-cpassword"></span></label>
       <input type="password" id="cPassword" name="confirmPassword"><br>
-      <input type="submit" value="Sign Up" id="signUp">
+      <input type="submit" value="Sign Up" id="signUp" >
     </form>
     <p>Already have an account?  <a href="#" onclick="toggleForms();">Sign in here</a></p>
   </div>
  
     <div id="loginContainer" style="display: none;">
-  
-      <form id="loginForm" method="post">
+  <p id="error.message" class="crazy"></p>
+      <form id="loginForm"  onsubmit="validateLoginForm();" method="post" >
         <h2>LOGIN TO SEE THE GAME</h2>
-        <label for="Email">Email:</label>
-        <input type="email" id="Email" name="loginEmail" required><br>
+        <label for="Username">Username</label>
+        <input type="username" id="Lusername" name="loginusername"><br>
         <label for="loginPassword">Password:</label>
-        <input type="password" id="LPassword" name="loginPassword" required><br>
+        <input type="password" id="LPassword" name="loginPassword" ><br>
         <input type="submit" value="Login" id="login">
       </form>
       <p>Don't have an account?   <a href="#" onclick="toggleForms();">Sign Up here</a>.</p>
@@ -42,26 +44,18 @@
   
    
   <!-- Ma, The form ends here -->
-
   <div class="container" id="container" style="display: none;">
     <div class="head">
+      <div id="welcomeMessage" class="welcomeMessage"></div>
         <h2>Memory Game</h2>
         <div class="score" id="score">Score: <span id="score">0</span></div>
       </div>
     <div class="game"></div>
-    <button class="reset" onclick="window.location.reload();">Reset</button>
+    <button class="reset" onclick="event.preventDefault(); window.location.reload();">Reset</button>
     <div class="message" id="congratulations"></div>
     <div class="message" id="clickCount"></div>
-<button class="noting" id="noting">Suprise!!</button>
   </div>
 
-  <div class="notepad">
-    <h1><i class="fa-solid fa-trash"></i>Take Notes</h1>
-    <textarea id="textarea1" cols="50" rows="20"></textarea>
-<button id="create"><i class="fa-solid fa-book"></i> Create Note</button>
-<button  id="save">Save</button>
-  </div>
-  <script src="backend.js"></script>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

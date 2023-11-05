@@ -1,167 +1,190 @@
-const loginContainer = document.querySelector("#loginContainer");
-const loginForm = document.querySelector("#loginForm");
-const userName = document.querySelector("#userName");
-const email = document.querySelector("#email");
-const loginPassword = document.querySelector("#loginPassword");
-const login = document.querySelector("#login");
-const signupContainer = document.querySelector("#signupContainer");
-const signupForm = document.querySelector("#signupForm");
-const fullName = document.querySelector("#fullName");
-const password = document.querySelector("#password");
-const cPassword = document.querySelector("#cPassword");
-const signUp = document.querySelector("#signUp");
-const Email = document.querySelector("#Email");
-const LPassword = document.querySelector("#LPassword");
-const gameContainer = document.querySelector(".container");
+let isSignedUp = false;
 
 function toggleForms() {
   loginContainer.style.display = loginContainer.style.display === "none" ? "block" : "none";
   signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
 }
 
-<<<<<<< HEAD
-function Binomial() {
-    gameContainer.style.display = loginContainer.style.display === "block" ? "none" : "block";
-    signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
-=======
-function DisplayGame() {
-  // // const isValid = validateInputs();
-  // if (isValid) {
-    gameContainer.style.display = loginContainer.style.display === "block" ? "none" : "block";
-    signupContainer.style.display = signupContainer.style.display === "none" ? "block" : "none";
-  // }
-}
-function bernouli() {
-  gameContainer.style.display = "block";
-  loginContainer .style.display ="none";
-}
-function miniVal(){
-  if (Email.value === "") {
-    alert("Error: Please enter your email address.");
-    return false;
-  }
-  
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(Email.value)) {
-    alert("Error: Please enter a valid email address.");
-    return false;
-  }
-  
-  if (LPassword.value === "") {
-    alert("Error: Password is empty");
-    return false;
-  }
->>>>>>> a280e7809a2ad01e1861e24427730380b66ef02c
-}
+let errorName = document.getElementById('error-Name');
+let errorEmail = document.getElementById('error-email');
+let errorPassword = document.getElementById('error-password');
+let userError = document.getElementById('error-username');
+let errorcpassword = document.getElementById('error-cpassword');
+let displayLoginError = document.getElementById('displayLoginError');
 
-function validateInputs(){
-  if (fullName.value === "" && email.value === "" && password.value === "" && cPassword.value === "") {
-    alert("Error: Please fill out the form");
-    return false;
-  }   
-
+function validateFullName() {
+  var fullName = document.getElementById('fullName');
   if (fullName.value === "") {
-    alert("Error: Full name is empty");
+    errorName.innerHTML = "Name is required";
     return false;
   }
-  
-  const re = /^[\w ]+$/;
-  if (!re.test(fullName.value)) {
-    alert("Error: Full name contains invalid characters!");
+  const fullNameRegex = /^[a-zA-Z\s]+$/;
+  if (!fullNameRegex.test(fullName.value)) {
+    errorName.innerHTML = "Full name contains invalid characters";
     return false;
+  } else {
+    errorName.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
   }
-  
+
+  return true;
+}
+
+function validateUserName() {
+  var userName = document.getElementById('userName');
+  if (userName.value === "") {
+    userError.innerHTML = "Username is required";
+    return false;
+  } else {
+    userError.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+  }
+
+  return true;
+}
+
+function validateEmail() {
+  var email = document.getElementById('email');
   if (email.value === "") {
-    alert("Error: Please enter your email address.");
+    errorEmail.innerHTML = "Email is required";
     return false;
   }
-  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email.value)) {
-    alert("Error: Please enter a valid email address.");
+    errorEmail.innerHTML = "Please enter a valid email address.";
     return false;
+  } else {
+    errorEmail.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
   }
-  
+
+  return true;
+}
+
+function validatePassword() {
+  var password = document.getElementById('password');
   if (password.value === "") {
-    alert("Error: Password is empty");
+    errorPassword.innerHTML = "Password is required";
     return false;
   }
   
   if (password.value.length < 6) {
-    alert("Error: Password must be at least 8 characters long");
+    errorPassword.innerHTML = "Password is too short";
     return false;
+  } else {
+    errorPassword.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
   }
 
-  if (cPassword.value === "") {
-    alert("Error: Confirm password is empty");
-    return false;
-  }
-
-  if (password.value !== cPassword.value) {
-    alert("Error: Passwords do not match");
-    return false;
-  }
-  return true
+  return true;
 }
 
+function validateCpassword() {
+  var cPassword = document.getElementById('cPassword');
+  if (cPassword.value === "") {
+    errorcpassword.innerHTML = "Re-enter Password";
+    return false;
+  }
+  
+  var password = document.getElementById('password');
+  if (password.value !== cPassword.value) {
+    errorcpassword.innerHTML = "Passwords don't match";
+    return false;
+  } else {
+    errorcpassword.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+  }
 
-signUp.addEventListener("click", (event) => {
+  return true;
+}
+
+function trickyVal() {
+  const isFullNameValid = validateFullName();
+  const isUserNameValid = validateUserName();
+  const isEmailValid = validateEmail();
+  const isPasswordValid = validatePassword();
+  const isCpasswordValid = validateCpassword();
+
+  // If any input is invalid, prevent form submission
+  if (
+    !isFullNameValid ||
+    !isUserNameValid ||
+    !isEmailValid ||
+    !isPasswordValid ||
+    !isCpasswordValid
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+let signupButton = document.getElementById('signUp');
+signupButton.addEventListener("click", (event) => {
   event.preventDefault();
-  if(validateInputs()){
-    handleSignup();
-    DisplayGame();
+  if (trickyVal()) {
+    displayGame();
   }
 });
 
+function displayGame() {
+  var gameContainer = document.getElementById('container');
+  var signupContainer = document.getElementById('signupContainer');
+  
+  gameContainer.style.display = "block";
+  signupContainer.style.display = "none";
+}
 
-<<<<<<< HEAD
-=======
-login.addEventListener("click", (event) => {
-  event.preventDefault();
-  handleLogin();
-  bernouli() ;
-});
+function validateLoginForm() {
+  const usernameInput = document.getElementById('Lusername');
+  const passwordInput = document.getElementById('LPassword');
+  const errorMessage = document.getElementById('error.message');
 
->>>>>>> a280e7809a2ad01e1861e24427730380b66ef02c
+  errorMessage.style.display = 'none';
+  errorMessage.innerHTML = '';
+
+  if (usernameInput.value.trim() === '') {
+    errorMessage.style.display = 'block';
+    errorMessage.innerHTML = 'Username field is required.';
+    return false;
+  }
+  if (passwordInput.value === '') {
+    errorMessage.style.display = 'block';
+    errorMessage.innerHTML = 'Password field is required.';
+    return false;
+  }
+
+  return true;
+}
+
 const emojis = ["🐱‍🚀", "🐱‍🚀", "🎂", "🎂", "💖", "💖", "🎶", "🎶"];
-var shuf_emojis = emojis.sort(() => (Math.random() > 0.5 ? 1 : -1));
-var clickCount = 0;
+const shuffledEmojis = emojis.sort(() => (Math.random() > 0.5 ? 1 : -1));
+let clickCount = 0;
 
-for (var i = 0; i
-  < shuf_emojis.length; i++) {
-  let box = document.createElement("div");
+for (let i = 0; i < shuffledEmojis.length; i++) {
+  const box = document.createElement("div");
   box.className = "item";
-  box.innerHTML = shuf_emojis[i];
+  box.textContent = shuffledEmojis[i];
 
   box.onclick = function () {
-    if (
-      this.classList.contains("boxOpen") ||
-      this.classList.contains("boxMatch")
-    ) {
+    if (this.classList.contains("boxOpen") || this.classList.contains("boxMatch")) {
       return; // Ignore clicks on already opened or matched items
     }
 
     this.classList.add("boxOpen");
     clickCount++;
 
-    var openedItems = document.querySelectorAll(".boxOpen");
+    const openedItems = document.querySelectorAll(".boxOpen");
     if (openedItems.length === 2) {
-      var firstItem = openedItems[0];
-      var secondItem = openedItems[1];
+      const firstItem = openedItems[0];
+      const secondItem = openedItems[1];
 
-      if (firstItem.innerHTML === secondItem.innerHTML) {
+      if (firstItem.textContent === secondItem.textContent) {
         firstItem.classList.add("boxMatch");
         firstItem.classList.remove("boxOpen");
         secondItem.classList.add("boxMatch");
         secondItem.classList.remove("boxOpen");
 
-        var matchedItems = document.querySelectorAll(".boxMatch");
+        const matchedItems = document.querySelectorAll(".boxMatch");
         if (matchedItems.length === emojis.length) {
           score.style.display = "flex";
-          document.getElementById("congratulations").textContent =
-            "Congratulations! You win!";
-          document.getElementById("clickCount").textContent =
-            "Number of Clicks: " + clickCount;
+          document.getElementById("congratulations").textContent = "Congratulations! You win!";
+          document.getElementById("clickCount").textContent = "Number of Clicks: " + clickCount;
         }
       } else {
         setTimeout(function () {
@@ -172,34 +195,144 @@ for (var i = 0; i
       }
     }
     document.getElementById("score").textContent = clickCount;
-  };
+ };
 
-  document.querySelector(".game").appendChild(box);
+document.querySelector(".game").appendChild(box);
 }
-// Ma this for the Note Pad Section 
-const create = document.getElementById("create");
-  const createInput = document.getElementById("textarea1");
-  const saveText = document.getElementById("save");
-  const noting = document.getElementById("noting");
 
-noting.addEventListener("click", (event) => {
-  event.preventDefault();
-  Notepad(event);
+const errorMessage = document.getElementById('error.message');
+
+const BASE_URL = "https://memory-game-x3fx.onrender.com/api/v1"; 
+
+const loggedInUserData = {};
+
+function handleSignup() {
+  const isFormValid = trickyVal();
+  
+  if (!isFormValid) {
+    errorMessage.innerHTML = "Form validation failed.";
+    return false;
+  }
+    const userData = {
+      username: fullName.value,
+      email: email.value,
+      password: password.value,
+    };
+  
+    fetch(`${BASE_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Signup failed');
+        }
+      })
+      .then(data => {
+        loggedInUserData.token = data.token;
+        return fetchUserData();
+      })
+      .then(userData => {
+        loggedInUserData.userData = userData;
+        displayGamePage();
+      })
+      .catch(error => {
+        errorMessage.innerHTML = "you Already have an account";
+      });
+    
+
+  isSignedUp = true;
+    signupButton.disabled = true;
+
+    return true;
+  
+}
+
+function handleLogin() {
+
+  if (isSignedUp = true) {
+    const credentials = {
+      username: fullName.value,
+      password: LPassword.value,
+    };
+  
+    fetch(`${BASE_URL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(credentials),
+    })
+      .then(response => {
+        if (response.ok) {
+          
+          return response.json();
+        } else {
+          throw new Error('Login failed');
+        }
+      })
+      .then(data => {
+        loggedInUserData.token = data.token;
+      
+        return fetchUserData();
+      })
+      .then(userData => {
+        loggedInUserData.userData = userData;
+        displayGamePage();
+      })
+      .catch(error => {
+        errorMessage.innerHTML = "Signup before you logIN in";
+      });
+  
+    }
+  //  else {
+  //   document.getElementById('error.message').innerHTML = "You have to sign up first.";
+  // }
+
+  if (!validateLoginForm()) {
+    errorMessage.innerHTML = isFormValid = false;
+    return;
+  }
+  return true;
+  
+}
+
+async function fetchUserData() {
+  const response = await fetch(`${BASE_URL}/userdata`, {
+    headers: {
+      'Authorization': `Bearer ${loggedInUserData.token}`,
+    },
+  });
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error('Failed to fetch user data');
+  }
+}
+
+function displayGamePage() {
+  var welcomeMessage = document.getElementById('welcomeMessage');
+  welcomeMessage.innerHTML = `Welcome back,  const {usernameInput.value}, to the memory game!`;
+  var gameContainer = document.getElementById('container');
+  var loginContainer = document.getElementById('loginContainer');
+  
+  gameContainer.style.display = "block";
+  loginContainer.style.display = "none";
+}
+let loginButton = document.getElementById('login');
+loginButton.addEventListener("click", (event) => {
+event.preventDefault();
+if(validateLoginForm()){
+  displayGamePage();
+  console.log(welcomeMessage);
+}
 });
 
-  function Notepad(event) {
-event.preventDefault();
-create.addEventListener("click", event => {
-  event.preventDefault();
-  createAgain(event);
-});
 
-function createAgain(event) {
-event.preventDefault();
-createInput.style.display = "block";
-if(createInput.style.display = "block"){
-  create.style.display="none"
-saveText.style.display="block"
-}
-}
-}
+
+
