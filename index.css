@@ -14,9 +14,22 @@ body{
     background-color: #0a3c2f;
 }
 
-.error {
-    border: 2px solid red;
-  }
+.tainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    font-family: 'Vibur', cursive;
+    font-size: 2em;
+    color: #666;
+    background: #000;
+    cursor: pointer;
+   }
+   
+   .fa{
+     margin-left: 20px;
+     color: #b3b300;
+   }
 
 form {
     width: 385px;
@@ -25,27 +38,27 @@ form {
     border: 1px solid #ccc;
     background-color: #ffff;
     }
- 
+ p .error #generror #errorgen{
+    position: relative;
+    left: 120px;
+color: red;
+ }
   label span{
     position: relative;
     left: 120px;
 color: red;
-  }
+  } 
+
   .fa-circle-check{
     color: #0d614b;
     position: absolute;
     left: 120px;
   }
-  .crazy{
-    color:red;
-  }
-  .welcomeMessage{
-    color: white;
-    font-weight: 500;
-    font-size: large;
-  }
+
+  
     h2 {
     margin-bottom: 20px;
+    cursor: pointer;
     }
     
     label {

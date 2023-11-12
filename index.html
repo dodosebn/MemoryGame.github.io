@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +11,11 @@
 <body>
   
   <div id="signupContainer" class="signupContainer">
-    <p id="error.message" class="crazy"></p>
+   <p id="generror" id="error" style="color : red;"></p>
 
-    <form id="signupForm" onsubmit="return handleSignup();" method="post">
+    <form id="signupForm" role="form" method="post" autocomplete="off">
       <h2>Signup Form</h2>
-      <label for="name">Names<span id="error-Name"></span></label>
+      <label for="name">fullName<span id="error-Name"></span></label>
       <input type="text" id="fullName" name="name" ><br>
       <label for="username">User Name<span id="error-username"></span></label>
       <input type="text" id="userName" name="username"><br>
@@ -30,32 +31,38 @@
   </div>
  
     <div id="loginContainer" style="display: none;">
-  <p id="error.message" class="crazy"></p>
-      <form id="loginForm"  onsubmit="validateLoginForm();" method="post" >
+      <p id="errorgen" id="error" style="color : red;"></p>
+      <form id="loginForm" role="form" >
         <h2>LOGIN TO SEE THE GAME</h2>
-        <label for="Username">Username</label>
-        <input type="username" id="Lusername" name="loginusername"><br>
-        <label for="loginPassword">Password:</label>
-        <input type="password" id="LPassword" name="loginPassword" ><br>
+        <label for="email">Email</label><span id="error-Lemail"></span>
+        <input type="email" id="Logemail" name="email" ><br>
+        <label for="Password">Password</label><span id="error-Lpassword"></span>
+        <input type="password" id="LogPassword" name="loginPassword"><br>
         <input type="submit" value="Login" id="login">
       </form>
-      <p>Don't have an account?   <a href="#" onclick="toggleForms();">Sign Up here</a>.</p>
+      <p>Don't have an account?   <a href="#" onclick="toggleForms();">Sign Up here</a></p>
     </div>
   
    
   <!-- Ma, The form ends here -->
   <div class="container" id="container" style="display: none;">
     <div class="head">
-      <div id="welcomeMessage" class="welcomeMessage"></div>
+      <main class="tainer">
+        <div id="col-1"></div>
+        <div id="col-2"><div id="icon"></div>
+      </div>
+      </main>
+      <!-- <div id="welcomeMessage" class="welcomeMessage"></div> -->
         <h2>Memory Game</h2>
         <div class="score" id="score">Score: <span id="score">0</span></div>
       </div>
     <div class="game"></div>
-    <button class="reset" onclick="event.preventDefault(); window.location.reload();">Reset</button>
+    <button class="reset" onclick="window.location.reload();">Reset</button>
     <div class="message" id="congratulations"></div>
     <div class="message" id="clickCount"></div>
   </div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
+  <!-- <script src="backend.js"></script> -->
 </body>
+
 </html>
